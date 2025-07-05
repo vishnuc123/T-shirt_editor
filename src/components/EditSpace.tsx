@@ -3,12 +3,12 @@ import ThreeSpace from './ThreeSpace'
 import { useRef, useState } from 'react'
 
 const EditSpace = () => {
-    const [color , setColor] = useState('#FFFFFF')
-    const inputref = useRef<HTMLInputElement>(null)
+  const [color, setColor] = useState<string | undefined>('')
+  const inputref = useRef<HTMLInputElement>(null)
 
-    const handleColor  = () => {
-        setColor(inputref.current?.value)
-    }
+  const handleColor = () => {
+    setColor(inputref.current?.value)
+  }
   return (
     <div className="p-4 flex flex-col items-center min-h-screen bg-gray-100 gap-6">
       {/* Canvas Container */}
@@ -31,7 +31,7 @@ const EditSpace = () => {
       >
         <h2 className="text-xl font-bold text-gray-800 mb-4">Edit Space</h2>
         <Canvas camera={{ position: [0, 2, 5], fov: 20 }}>
-          <ThreeSpace color={color}/>
+          <ThreeSpace color={color} />
           <ambientLight intensity={0.2} />
           <pointLight position={[0, 1, 1]} intensity={1.5} />
         </Canvas>
@@ -40,13 +40,13 @@ const EditSpace = () => {
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-4">
         <input
-        ref={inputref}
+          ref={inputref}
           type="text"
           placeholder="#FF0000"
           className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
         />
         <button
-        onClick={handleColor}
+          onClick={handleColor}
           className="
             bg-amber-500 
             hover:bg-amber-600 
@@ -62,7 +62,18 @@ const EditSpace = () => {
         >
           Apply Color
         </button>
+
       </div>
+      <button className=' bg-amber-500 
+            hover:bg-amber-600 
+            text-white 
+            font-medium 
+            py-2 
+            px-4 
+            rounded 
+            shadow 
+            transition-all 
+            duration-300'>select textures</button>
     </div>
   )
 }
