@@ -69,8 +69,17 @@ const ThreeSpace = ({
         repeat={repeat}
         rotation={rotation}
       />
-      <OrbitControls />
-    </>
+<OrbitControls
+  enableZoom={true}
+  minDistance={3}
+  maxDistance={7}
+  enablePan={false} 
+  enableRotate={true}
+  touches={{
+    ONE: THREE.TOUCH.ROTATE,
+    TWO: THREE.TOUCH.DOLLY_ROTATE 
+  }}
+/>   </>
   )
 }
 
